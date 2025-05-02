@@ -22,5 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
 # credenciales service account
 /scripts/inventory-admin.json
+
+node_modules/ 
+
