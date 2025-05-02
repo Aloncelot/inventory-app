@@ -1,0 +1,114 @@
+// Variables
+$bg-dark: #000; // Fondo negro
+$text-light: #fff; // Texto claro
+$border-dark: #21262d; // Bordes oscuros
+
+// Nueva paleta turquesa/verdes/azules
+$turquoise: #40e0d0;
+$sea-green: #20c997;
+$sky-blue: #3fa7f3;
+$light-teal: #9eeef8;
+
+// Reset y fondo global
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  background: $bg-dark;
+  color: $text-light;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+// Contenedor principal
+.app-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+// Input de búsqueda
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: $bg-dark;
+  border: 1px solid $border-dark;
+  border-radius: 4px;
+  color: $text-light;
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: $sky-blue;
+    box-shadow: 0 0 8px $sky-blue;
+  }
+}
+
+// Tabla
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid $border-dark;
+  border-radius: 6px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    th:nth-child(n + 4):nth-child(-n + 11),
+    td:nth-child(n + 4):nth-child(-n + 11) {
+      text-align: center;
+    }
+    th,
+    td {
+      padding: 0.75rem 1rem;
+      border: 1px solid $border-dark;
+      font-size: 0.9rem;
+      color: $text-light;
+    }
+
+    thead {
+      background: linear-gradient(45deg, $sea-green, $sky-blue);
+
+      th:hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+    }
+
+    tbody tr {
+      &:nth-child(odd) {
+        background: #161b22;
+      }
+      &:nth-child(even) {
+        background: #0d1117;
+      }
+      &:hover {
+        background: rgba($turquoise, 0.1);
+      }
+    }
+  }
+}
+
+// Badges de stock
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #000;
+
+  &.on-stock {
+    background: $sea-green;
+  }
+  &.low-stock {
+    background: $light-teal;
+  }
+  &.no-stock {
+    background: $turquoise;
+  }
+}
