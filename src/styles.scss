@@ -112,3 +112,327 @@ body {
     background: $turquoise;
   }
 }
+
+// BulkInboundPage y tabla
+.inbound-form table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+
+  th,
+  td {
+    border: 1px solid $border-dark;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  input {
+    width: 100%;
+    background: $bg-dark;
+    border: 1px solid $border-dark;
+    border-radius: 4px;
+    color: $text-light;
+    padding: 0.25rem;
+  }
+}
+
+.inbound-form button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: $sea-green;
+  border: none;
+  border-radius: 4px;
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    background: lighten($sea-green, 10%);
+  }
+}
+
+// ————————————————————————————————————————————
+// Inbound page styles
+// ————————————————————————————————————————————
+
+/* Contenedor global de inbound */
+.inbound-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #0d1117;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Títulos y estado */
+.inbound-container h1,
+.inbound-container h2 {
+  color: $sky-blue; // antes $neon-blue
+  margin-bottom: 1rem;
+}
+.status {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: rgba($sea-green, 0.1); // antes $neon-green
+  color: $sea-green;
+  font-weight: 600;
+}
+
+/* Secciones */
+.inbound-section,
+.new-material-section {
+  margin-bottom: 3rem;
+}
+.inbound-section h2,
+.new-material-section h2 {
+  margin-bottom: 1rem;
+}
+
+/* Tabla de inbound */
+.inbound-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    border: 1px solid $border-dark;
+    font-size: 0.9rem;
+    color: $text-light;
+    text-align: left;
+  }
+
+  thead {
+    background: linear-gradient(
+      45deg,
+      $sky-blue,
+      $sea-green
+    ); // antes $neon-blue, $neon-green
+    th {
+      color: #000;
+    }
+  }
+
+  tbody tr {
+    &:nth-child(odd) {
+      background: #161b22;
+    }
+    &:nth-child(even) {
+      background: #0d1117;
+    }
+    &:hover {
+      background: rgba($turquoise, 0.1); // antes $neon-pink
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid $border-dark;
+    border-radius: 4px;
+    color: $text-light;
+    &:focus {
+      outline: none;
+      border-color: $sky-blue; // antes $neon-blue
+      box-shadow: 0 0 6px $sky-blue;
+    }
+  }
+}
+
+/* Botones de inbound */
+.inbound-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    background: $sea-green; // antes $neon-green
+    color: #000;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    &:hover {
+      background: lighten($sea-green, 10%);
+    }
+  }
+}
+
+/* Formulario nuevo material */
+.new-material-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  align-items: center;
+
+  select,
+  input {
+    padding: 0.6rem;
+    background: transparent;
+    border: 1px solid $border-dark;
+    border-radius: 4px;
+    color: $text-light;
+    font-size: 0.9rem;
+    &:focus {
+      outline: none;
+      border-color: $sea-green; // antes $neon-green
+      box-shadow: 0 0 6px $sea-green;
+    }
+  }
+
+  button {
+    grid-column: span 2;
+    justify-self: start;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    background: $sky-blue; // antes $neon-blue
+    color: #000;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    &:hover {
+      background: lighten($sky-blue, 10%);
+    }
+  }
+}
+
+// ————————————————————————————————————————————
+// NewMaterial page styles
+// ————————————————————————————————————————————
+
+.new-material-section {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #0d1117;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  h1 {
+    color: $sky-blue;
+    margin-bottom: 1rem;
+  }
+}
+
+.new-material-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    border: 1px solid $border-dark;
+    color: $text-light;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  thead {
+    background: linear-gradient(45deg, $sky-blue, $sea-green);
+    th {
+      color: #000;
+    }
+  }
+
+  tbody tr {
+    &:nth-child(odd) {
+      background: #161b22;
+    }
+    &:nth-child(even) {
+      background: #0d1117;
+    }
+    &:hover {
+      background: rgba($light-teal, 0.1);
+    }
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid $border-dark;
+    border-radius: 4px;
+    color: $text-light;
+    font-size: 0.9rem;
+
+    &:focus {
+      outline: none;
+      border-color: $sky-blue;
+      box-shadow: 0 0 6px $sky-blue;
+    }
+  }
+}
+
+.new-material-buttons {
+  display: flex;
+  gap: 1rem;
+
+  button {
+    padding: 0.6rem 1.2rem;
+    background: $sea-green;
+    border: none;
+    border-radius: 4px;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: lighten($sea-green, 10%);
+    }
+  }
+}
+
+.new-material-section .new-material-table select {
+  background: $bg-dark;
+  color: $text-light;
+}
+.new-material-section .new-material-table select option {
+  background: $bg-dark;
+  color: $text-light;
+}
+
+/* Ajusta ancho de la 5ª columna (%): */
+.new-material-section .new-material-table {
+  th:nth-child(5),
+  td:nth-child(5) {
+    width: 100px; // prueba con 80px, 100px, etc.
+    min-width: 60px;
+    text-align: center;
+  }
+}
+
+/* Columna Eliminar */
+.table-wrapper button.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: $turquoise;
+  transition: color 0.2s;
+  &:hover {
+    color: $sea-green;
+  }
+}
+
+// src/styles.scss (o donde centralices tus estilos)
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ff6ac1;
+
+  &:hover {
+    color: lighten(#ff6ac1, 10%);
+  }
+}

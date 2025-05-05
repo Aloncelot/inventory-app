@@ -1,34 +1,54 @@
+// src/context/InventoryContext.js
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  doc,
+  deleteDoc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebaseClient";
 
-const InventoryContext = createContext();
-export const useInventory = () => useContext(InventoryContext);
+const InventoryContext = createContext({
+  items: [],
+  deleteItem: () => {},
+  addNewMaterial: () => {},
+});
 
 export function InventoryProvider({ children }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // Suscripción en tiempo real a la colección
-    const unsubscribe = onSnapshot(
+    const unsub = onSnapshot(
       collection(db, "inventoryItems"),
-      (snapshot) => {
-        const data = snapshot.docs.map((doc) => ({
-          sku: doc.id,
-          ...doc.data(),
-        }));
-        setItems(data);
-      },
-      (err) => {
-        console.error("Error escuchando inventoryItems:", err);
-      }
+      (snap) =>
+        setItems(
+          snap.docs.map((d) => ({
+            sku: d.id,
+            ...d.data(),
+          }))
+        ),
+      (err) => console.error("Error al leer inventario:", err)
     );
-    return unsubscribe; // limpia la suscripción al desmontar
+    return () => unsub();
   }, []);
 
+  async function deleteItem(sku) {
+    await deleteDoc(doc(db, "inventoryItems", sku));
+  }
+
+  // ← Nueva firma: recibe UN OBJETO con sku y datos
+  async function addNewMaterial(record) {
+    const { sku, ...data } = record;
+    // data ya contiene material, category, units, priceToSophava, priceToClient, etc.
+    await setDoc(doc(db, "inventoryItems", sku), data, { merge: true });
+  }
+
   return (
-    <InventoryContext.Provider value={{ items }}>
+    <InventoryContext.Provider value={{ items, deleteItem, addNewMaterial }}>
       {children}
     </InventoryContext.Provider>
   );
 }
+
+export const useInventory = () => useContext(InventoryContext);

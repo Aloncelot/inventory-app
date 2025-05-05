@@ -1,13 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom/client"; // React 18
+import { BrowserRouter } from "react-router-dom";
+
 import App from "./App";
 import { InventoryProvider } from "./context/InventoryContext";
 import "./styles.scss";
 
-const container = document.getElementById("root");
-const root = ReactDOM.createRoot(container);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <InventoryProvider>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </InventoryProvider>
 );
